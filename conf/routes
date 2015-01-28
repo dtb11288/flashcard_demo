@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Pages
+GET         /                          controllers.Application.index
+GET         /flashcard                 controllers.Application.flashCard
+GET         /chat                      controllers.Application.chat
+
+# Service
+GET         /cards                     controllers.Application.getCards
+POST        /card                      controllers.Application.addCard
+POST        /login                     controllers.Application.login
+GET         /logout                    controllers.Application.logout
+
+# Socket
+GET         /sendChat/:username        controllers.Application.sendChat(username: String)
+
+# Test for fun
+GET         /test                      controllers.Application.test
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file              controllers.Assets.at(path="/public", file)

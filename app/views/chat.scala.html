@@ -1,0 +1,20 @@
+@(username: String)
+
+    @main("Communication", 2) {
+        <div ng-controller="controlChat" ng-init="username='@username'">
+            <div class="row input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="send(message)">Send</button>
+                </span>
+                <input ng-keyup="$event.keyCode == 13 && send(message)" type="text" class="form-control" id="message" name="message" ng-model="message">
+            </div>
+            <hr />
+            <table class="table table-striped table-hover ">
+                <tbody>
+                    <tr ng-repeat="message in messages" ng-model="messages">
+                        <td><b>{{message.username}}:</b> <i>{{message.text}}</i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }

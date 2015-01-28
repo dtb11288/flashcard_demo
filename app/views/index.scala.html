@@ -1,0 +1,31 @@
+@(username: String)
+
+@main("Sample Page", 0) {
+	<div class="col-lg-9">
+		<div class="header"><h2>Welcome to the sample page</h2></div>
+		<hr />
+		<div class="comment">
+			This is just a sample page, you need to sign in to use flashcard and chating
+			<ul>
+				<li>root: root</li>
+				<li>user1: password1</li>
+				<li>user2: password2</li>
+				<li>user3: password3</li>
+			</ul>
+		</div>
+	</div>
+	<div ng-controller="controlIndex" class="col-lg-offset-9" ng-init=@("username='" + username + "';loggedIn=" + (username != "").toString)>
+		<div class="form-signin" ng-show="!loggedIn">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<label for="inputUsername" class="sr-only">Username</label>
+			<input type="input" id="inputUsername" ng-model="user.username" class="form-control" placeholder="Username" required="" autofocus="">
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="inputPassword" ng-model="user.password" class="form-control" placeholder="Password" required="">
+			<button class="btn btn-lg btn-primary btn-block" type="button" ng-click="signIn()">Sign in</button>
+		</div>
+		<div ng-show="loggedIn">
+			<h2 class="form-signin-heading">Hello {{username}}</h2>
+			<button class="btn btn-lg btn-primary btn-block" type="button" ng-click="signOut()">Sign out</button>
+		</div>
+	</div>
+}
